@@ -2,6 +2,7 @@ import random
 import datetime
 import os
 
+
 def get_upper():
     '''
     生成大写字母
@@ -31,7 +32,7 @@ def get_lower(count):
 
 
 def desktop_path():
-    path = os.path.join(os.path.expanduser('~'),"Desktop")
+    path = os.path.join(os.path.expanduser('~'), "Desktop")
     if not os.path.exists(path):
         pass
     return path
@@ -48,8 +49,8 @@ def generate_password(length):
         length = 6
 
     lst = []
-    upper_lst = get_upper()     # 大写
-    special_char = get_special_char()      # 特殊字符
+    upper_lst = get_upper()  # 大写
+    special_char = get_special_char()  # 特殊字符
     lst.extend(upper_lst)
     lst.extend(special_char)
 
@@ -64,9 +65,9 @@ def generate_password(length):
 if __name__ == '__main__':
     password = generate_password(16)
     print(password)
-    with open('./history.csv','a', encoding="utf-8") as f:
+    with open('./history.csv', 'a', encoding="utf-8") as f:
         f.write('%s,%s\n' % (datetime.date.today(), password))
-    # with open(os.path.join(desktop_path(),str(datetime.date.today())+'.txt'),'w', encoding="utf-8") as f:
-    with open('./%s.txt' % datetime.date.today(),'w', encoding="utf-8") as f:
+    # with open(os.path.join(desktop_path(), str(datetime.date.today()) + '.txt'), 'w', encoding="utf-8") as f:
+    with open('./%s.txt' % datetime.date.today(), 'w', encoding="utf-8") as f:
         f.write('%s' % (password))
     input("请输入任意字符退出...")
